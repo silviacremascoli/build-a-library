@@ -9,9 +9,37 @@ class Media {
     return this._title;
   }
 
-  getAverageRating() {}
-  toggleCheckOutStatus() {}
-  addRating() {}
+  get ratings() {
+    return this._ratings;
+  }
+
+  get isCheckedOut() {
+    return this._isCheckedOut;
+  }
+
+  set isCheckedOut(newIsCheckedOut) {
+    if (typeof newIsCheckedOut === "boolean") {
+      this._isCheckedOut = newIsCheckedOut;
+    }
+  }
+
+  getAverageRating() {
+    let ratingsSum = this.ratings.reduce(
+      (acc, currValue) => acc + currValue,
+      0
+    );
+    return ratingsSum / this.ratings.length;
+  }
+  toggleCheckOutStatus() {
+    if (isCheckedOut === true) {
+      return isCheckedOut === false;
+    } else {
+      return isCheckedOut === true;
+    }
+  }
+  addRating(rating) {
+    this.ratings.push(rating);
+  }
 }
 
 class Book extends Media {
